@@ -1,22 +1,19 @@
 const { Router } = require('express');
 const { debtController } = require('../controllers/debt.controller');
+const { validateIdExist } = require('../middlewares');
 
 const router = Router();
 
-const testMiddleware = (req, res, next) => {
-    next();
-};
-
 router.get('/debts', debtController.getAllDebts);
 
-router.get('/debt/id/:id', debtController.getDebtById);
+router.get('/debts/:id', validateIdExist, debtController.getDebtById);
 
-router.get('/debt/dni/:dni', debtController.getDebtByDni);
+router.get('/debts/:dni', debtController.getDebtByDni);
 
-router.post('/create-debt', debtController.postDebt);
+router.post('/debts', debtController.postDebt);
 
-router.put('/update-debt/:id', debtController.putDebt);
+router.put('/debts/:id', debtController.putDebt);
 
-router.delete('/delete-debt/:id', debtController.deleteDebt);
+router.delete('/debts/:id', debtController.deleteDebt);
 
 module.exports = router;

@@ -20,7 +20,7 @@ app.use(usersRoute);
 app.use(debtRoute);
 
 app.use((err, req, res, next) => {
-    return res.json({
+    return res.status(500).json({
         message: err.message
     })
 });
