@@ -38,6 +38,8 @@ const postDebt = async (req, res, next) => {
         VALUES ($1, $2, $3, $4, $5) RETURNING *;`;
         const values = [ dni, description, total, dues, quotaValue ];
         const result = await pool.query(query, values);
+        const resultFunction = await pool.query('SELECT INSERT_DEBT_DETAIL($1);', [result.rows[0].debt_id]);
+        
         res.json(result.rows);
     } catch (error) {
         next(error)
