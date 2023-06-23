@@ -4,16 +4,16 @@ import { validateIdExist } from '../middlewares/middlewares.js'
 
 const router = Router();
 
-router.get('/api/debts', debtController.getAllDebts);
+router.get('/debts', debtController.getAllDebts);
 
-router.get('/api/debts/:id', validateIdExist, debtController.getDebtById);
+router.post('/debts', debtController.postDebt);
 
-router.get('/api/debts/:dni', debtController.getDebtByDni);
+router.get('/debts/:id', validateIdExist, debtController.getDebtById);
 
-router.post('/api/debts', debtController.postDebt);
+router.get('/debts/:dni', debtController.getDebtByDni);
 
-router.put('/api/debts/:id', debtController.putDebt);
+router.put('/debts/:id', debtController.putDebt);
 
-router.delete('/api/debts/:id', debtController.deleteDebt);
+router.delete('/debts/:id', debtController.deleteDebt);
 
 export default router;

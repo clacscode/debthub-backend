@@ -5,9 +5,9 @@ import app from './app.js'
 
 const port = (sv.port || '4000');
 
-app.use(usersRoute);
+app.use('/api', usersRoute);
 
-app.use(debtRoute);
+app.use('/api', debtRoute);
 
 app.use((err, req, res, next) => {
     return res.status(500).json({

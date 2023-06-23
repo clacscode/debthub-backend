@@ -61,7 +61,7 @@ const putUser = async (req, res, next) => {
 
 const deleteById = async (req, res, next) => {
     try {
-        const query = `DELETE FROM users WHERE id = $1 RETURNING*;`;
+        const query = `DELETE FROM users WHERE user_id = $1 RETURNING*;`;
         const { id } = req.params;
         const result = await pool.query(query, [id]);
         res.json(result.rows);

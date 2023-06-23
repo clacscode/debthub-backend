@@ -3,16 +3,16 @@ import { userController } from '../controllers/users.controller.js'
 
 const router = Router();
 
-router.get('/api/users', userController.getAllUsers);
+router.get('/users', userController.getAllUsers);
 
-router.get('/api/users/:dni', userController.getUser);
+router.post('/users', userController.postUser);
 
-router.post('/api/users', userController.postUser);
+router.get('/users/:dni', userController.getUser);
 
-router.put('/api/users/:dni', userController.putUser);
+router.put('/users/:dni', userController.putUser);
 
-router.delete('/api/users/:id', userController.deleteById);
+router.delete('/users/id/:id', userController.deleteById);
 
-router.delete('/api/users/:dni', userController.deleteByDni);
+router.delete('/users/:dni', userController.deleteByDni);
 
 export default router;
