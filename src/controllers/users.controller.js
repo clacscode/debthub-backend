@@ -1,4 +1,4 @@
-const pool = require('../database/postgres');
+import pool from '../database/postgres.js'
 
 const getAllUsers = async (req, res, next) => {
     try {
@@ -81,13 +81,11 @@ const deleteByDni = async (req, res, next) => {
     }
 }
 
-module.exports = {
-    userController: {
-        getAllUsers,
-        getUser,
-        postUser,
-        putUser,
-        deleteById,
-        deleteByDni
-    }
-};
+export const userController = {
+    getAllUsers,
+    getUser,
+    postUser,
+    putUser,
+    deleteById,
+    deleteByDni
+}

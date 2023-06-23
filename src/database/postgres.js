@@ -1,13 +1,26 @@
-const { Pool } = require('pg');
-const { db } = require('../config');
+import pg from 'pg'
+import { db } from '../config.js'
+
+const { Pool } = pg;
+
+const { user, password, host, port, database, schema } = db;
 
 const pool = new Pool({
-    user: db.user,
-    password: db.password,
-    host: db.host,
-    port: db.port,
-    database: db.database,
-    schema: db.schema
+    user,
+    password,
+    host,
+    port,
+    database,
+    schema
 });
 
-module.exports = pool; 
+pool.connect((err, client, release) => {
+    if (err) {
+        console.error('Error connecting to database:', err);
+    } else {
+        console.log('>>> DB is connected');
+        release();
+    }
+});
+
+export default pool;

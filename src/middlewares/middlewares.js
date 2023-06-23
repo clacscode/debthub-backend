@@ -1,6 +1,6 @@
-const pool = require('./database/postgres');
+import pool from '../database/postgres.js'
 
-const validateIdExist = async (req, res, next) => {
+export const validateIdExist = async (req, res, next) => {
     const { id } = req.params;
     try {
         const query = `SELECT * FROM debt WHERE debt_id = $1;`;
@@ -13,8 +13,4 @@ const validateIdExist = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
-}
-
-module.exports = {
-    validateIdExist
 }

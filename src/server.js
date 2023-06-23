@@ -1,17 +1,7 @@
-const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors');
-const { sv } = require('./config');
-const usersRoute = require('./route/users.route');
-const debtRoute = require('./route/debt.route');
-
-const app = express();
-
-app.use(cors());
-
-app.use(morgan('dev'));
-
-app.use(express.json());
+import { sv } from './config.js'
+import usersRoute from './routes/users.route.js'
+import debtRoute from './routes/debt.route.js'
+import app from './app.js'
 
 const port = (sv.port || '4000');
 
